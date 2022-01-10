@@ -1,3 +1,4 @@
+//Method 1
 int maxtwobuysell(int arr[],int size) {
     int first_buy = INT_MIN;
       int first_sell = 0;
@@ -14,3 +15,31 @@ int maxtwobuysell(int arr[],int size) {
     }
      return second_sell;
 }
+
+//Method 2
+class Solution {
+public:
+    int maxProfit(vector<int>& prices) {
+        int n=prices.size();
+        vector<int> vec(n,0);
+        int mx=prices[n-1];
+        int mi=prices[0];
+        for(int i=n-2;i>=0;i--)
+        {
+            if(mx<prices[i])
+            {
+                mx=prices[i];
+            }
+            vec[i]=max(vec[i+1],mx-prices[i]);
+        }
+        for(int i=1;i<n;i++)
+        {
+            if(mi>prices[i])
+            {
+                mi=prices[i];
+            }
+            vec[i]=max(vec[i-1],vec[i]+(prices[i]-mi));
+        }
+        return vec[n-1];
+    }
+};
