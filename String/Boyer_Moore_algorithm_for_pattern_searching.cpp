@@ -34,3 +34,41 @@ bool searchPattern(string str, string pat)
         }
     }
 }
+
+//Pattern Search
+void badCharHeuristic(string pat,int m,int badChar[256])
+{
+    for(int i=0;i<256;i++)
+    {
+        badChar[i]=-1;
+    }
+    for(int i=0;i<m;i++)
+    {
+        badChar[(int)pat[i]]=i;
+    }
+}
+bool searchPattern(string str, string pat)
+{
+    int m=pat.length();
+    int n=str.length();
+    int badChar[256];
+    badCharHeuristic(pat,m,badChar);
+    int s=0;
+    while(s<=(n-m))
+    {
+        int j=m-1;
+        while(j>=0 && pat[j]==str[s+j])
+        {
+            j--;
+        }
+        if(j<0)
+        {
+            return true;
+        }
+        else
+        {
+            s += max(1, j - badChar[str[s + j]]);
+        }
+    }
+    return false;
+}
