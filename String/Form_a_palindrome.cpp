@@ -28,3 +28,28 @@ class Solution{
         return n-ans;
     }
 };
+
+//Method 2
+class Solution{
+  public:
+    int countMin(string str){
+        int l,h;
+        int size=str.length();
+        int arr[size][size]={0};
+        for(int i=1;i<size;i++)
+        {
+            for(l=0,h=i;h<size;l++,h++)
+            {
+                if(str[l]==str[h])
+                {
+                    arr[l][h]=arr[l+1][h-1];
+                }
+                else
+                {
+                    arr[l][h]=(min(arr[l][h-1],arr[l+1][h])+1);
+                }
+            }
+        }
+        return arr[0][size-1];
+    }
+};
