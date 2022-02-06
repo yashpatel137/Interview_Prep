@@ -27,3 +27,26 @@ class Solution
         return true;
     }
 };
+
+//Method 2
+class Solution
+{
+    public:
+    //Function to check if two strings are isomorphic.
+    bool areIsomorphic(string s, string t)
+    {
+        int m1[256], m2[256];
+        memset(m1, -1, sizeof(m1));
+        memset(m2, -1, sizeof(m2));
+        
+        if(s.length() != t.length()) return false;
+        
+        for(int i = 0; i < s.length(); i++) {
+            if(m1[s[i]] != m2[t[i]])
+                return false;
+            m1[s[i]] = m2[t[i]] = i;
+        }
+        
+        return true;
+    }
+};
