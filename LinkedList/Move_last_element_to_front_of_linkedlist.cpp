@@ -12,7 +12,7 @@ void moveToLast(node *head)
         seclast=last;
         last=last->next;
     }
-    seclast=NULL;
+    seclast->next=NULL;
     last->next=head;
     head=last;
 }
