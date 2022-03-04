@@ -25,3 +25,30 @@ class Solution{
         return check(root,h);
     }
 };
+
+//Method 2
+class Solution{
+    public:
+    int flag=1;
+    int check(Node *root)
+    {
+        int l=0,r=0;
+        if(root==NULL)
+        {
+            return 0;
+        }
+        l=check(root->left);
+        r=check(root->right);
+        if(abs(l-r)>1)
+        {
+            flag=0;
+        }
+        return max(l,r)+1;
+    }
+    bool isBalanced(Node *root)
+    {
+        flag=1;
+        check(root);
+        return flag;
+    }
+};
