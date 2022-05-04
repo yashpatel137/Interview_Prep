@@ -1,3 +1,4 @@
+//Krushkal's Algo
 class Solution
 {
 	public:
