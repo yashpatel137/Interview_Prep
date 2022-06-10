@@ -19,3 +19,21 @@ public:
         return minl==INT_MAX?0:minl;
     }
 };
+
+//Method 2
+int smallestSubWithSum(int arr[], int n, int x)
+    {
+        int i=0, j=0, sum = arr[0], mini = INT_MAX;
+       while(j<n) {
+           if(sum <= x) {
+               j++; 
+               sum = sum + arr[j];
+           }
+           else if(sum > x) {
+               mini = min(mini, j-i+1);
+               sum = sum - arr[i];
+               i++;
+           }
+       } 
+       return mini;
+    }
