@@ -42,7 +42,7 @@ int kthSmallest(int mat[MAX][MAX], int n, int k)
 }
 
 //Mdethod 3
-int getElementsGreaterThanOrEqual(int mat[MAX][MAX],int n,int num) 
+int upperbound(int mat[MAX][MAX],int n,int num) 
 {
     int ans = 0;
     for (int i = 0; i < n; i++) 
