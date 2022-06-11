@@ -21,13 +21,9 @@ int findMaxValue(int mat[][], int N)
 	{
 		for (int j = N-2; j >= 0; j--)
 		{
-			if (maxArr[i+1][j+1] - mat[i][j] >
-											maxValue)
+			if (maxArr[i+1][j+1] - mat[i][j] > maxValue)
 				maxValue = maxArr[i + 1][j + 1] - mat[i][j];
-
-			maxArr[i][j] = max(mat[i][j],
-							max(maxArr[i][j + 1],
-								maxArr[i + 1][j]) );
+			maxArr[i][j] = max(mat[i][j],max(maxArr[i][j + 1],maxArr[i + 1][j]) );
 		}
 	}
 	return maxValue;
