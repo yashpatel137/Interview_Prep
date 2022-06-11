@@ -75,7 +75,7 @@ int kthSmallest(int mat[MAX][MAX], int n, int k)
     while(low<high)
     {
         int mid=(low+high)/2;
-        int count=(upperbound(mat,n,mid);
+        int count=(upperbound(mat,n,mid));
         if(count<k)
         {
             low=mid+1;
