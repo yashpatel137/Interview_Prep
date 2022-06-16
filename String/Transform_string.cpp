@@ -40,3 +40,44 @@ class Solution
         return cnt;
     }
 };
+
+//Method 2
+class Solution{
+    
+    public:
+    int transfigure (string A, string B)
+    {
+        int n=A.size()-1,m=B.size()-1;
+        if(n!=m)
+        {
+            return -1;
+        }
+        int s[256]={0},cnt=0;
+        for(int i=0;i<=n;i++)
+        {
+            s[A[i]]++;
+            s[B[i]]--;
+        }
+        for(int i=0;i<256;i++)
+        {
+            if(s[i]!=0)
+            {
+                return -1;
+            }
+        }
+        n=A.size()-1,m=B.size()-1;
+        while(n>=0)
+        {
+            if(A[n]==B[m])
+            {
+                m--;
+            }
+            else
+            {
+                cnt++;
+            }
+            n--;
+        }
+        return cnt;
+    }
+};
