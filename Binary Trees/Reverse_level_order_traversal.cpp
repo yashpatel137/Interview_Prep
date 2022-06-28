@@ -24,3 +24,6 @@ vector<int> reverseLevelOrder(Node *root)
     reverse(ans.begin(),ans.end());
     return ans;
 }
+
+//Method 2
+Use stack and queue instead of reversing the vector.
