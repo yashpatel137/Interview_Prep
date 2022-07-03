@@ -49,3 +49,33 @@ class Solution{
         return root;
     }
 };
+
+//Method 3
+int findposition(int in[],int element,int n){
+        for(int i=0;i<n;i++){
+            if(in[i]==element){
+                return i;
+            }
+        }
+        return -1;
+    }
+    Node*solve(int in[],int pre[],int &index,int start,int end,int n){
+      
+        if(index>=n||start>end){
+            return NULL;
+        }
+        int element=pre[index++];
+        Node*root=new Node(element);
+        int position=findposition(in,element,n);
+        root->left=solve(in,pre,index,start,position-1,n);
+        root->right=solve(in,pre,index,position+1,end,n);
+        return root;
+        
+    }
+    Node* buildTree(int in[],int pre[], int n)
+    {
+        int preorderindex=0;
+        Node*ans=solve(in,pre,preorderindex,0,n-1,n);
+        return ans;
+        
+    }
