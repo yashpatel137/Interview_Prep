@@ -27,3 +27,11 @@ int minSwaps(std::vector<int> &v)
 	}
 	return ans;
 }
+int main()
+{
+    int a[] = { 5, 6, 7, 8, 9, 10, 11 };
+    int n = sizeof(a) / sizeof(a[0]);
+    std::vector<int> v;
+    inorder(a, v, n, 0);
+    cout << minSwaps(v) << endl;
+}
