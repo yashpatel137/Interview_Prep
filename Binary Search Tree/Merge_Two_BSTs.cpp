@@ -73,6 +73,27 @@ class Solution
     }
 };
 
+//Method 3
+class Solution {
+public:
+    TreeNode* mergeTrees(TreeNode* root1, TreeNode* root2) {
+        if( root1 == NULL && root2==NULL){
+            return NULL;
+        }
+        TreeNode* temp = new TreeNode();
+        if(root1!=NULL && root2!=NULL){
+            temp->val=root1->val+root2->val;
+            temp->left = mergeTrees(root1->left,root2->left);
+            temp->right = mergeTrees(root1->right,root2->right);
+        }else if(root1!=NULL){
+            temp=root1;
+        }else{
+            temp=root2;
+        }
+        return temp;
+    }
+};
+
 
 /**
  * Definition for a binary tree node.
