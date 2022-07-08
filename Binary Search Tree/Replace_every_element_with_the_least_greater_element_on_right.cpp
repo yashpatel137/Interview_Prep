@@ -22,3 +22,16 @@ void replace(int arr[], int n)
             arr[i] = -1;
     }
 }
+
+//Method 2
+void solve(vector<int>& arr) {
+    set<int> s;
+    vector<int> ans(arr.size());
+    for(int i=arr.size()-1;i>=0;i--) 
+    {
+        s.insert(arr[i]); 
+        auto it = s.upper_bound(arr[i]);
+        if(it == s.end()) arr[i] = -1; 
+        else arr[i] = *it; 
+    }
+}
