@@ -43,3 +43,26 @@ class Solution{
 	} 
 	  
 };
+
+//Method 3
+int findMinCoins(int coins[], int size,  int value)
+{
+    int i, count = 0;
+
+    for(i = 0; i < size; i++)
+    {
+        //take as much from coins[i]
+        while(value >= coins[i])
+        {
+            //after taking the coin, reduce the value.
+            value -= coins[i];
+            ans[count] = coins[i];
+            count++;
+        }
+        if(value == 0)
+            break;
+
+    }
+
+    return count;
+}
