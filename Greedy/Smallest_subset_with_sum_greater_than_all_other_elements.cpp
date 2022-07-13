@@ -26,3 +26,30 @@ int main()
 	cout << minElements(arr, n) << endl;
 	return 0;
 }
+
+
+//Method 2
+class Solution{
+    public:
+    int minSubset(vector<int> &arr,int N){
+        long long int sum=0;
+        long long int totalSum=0;
+        for(int i=0;i<N;i++)
+        {
+            totalSum+=arr[i];
+        }
+        totalSum/=2;
+        int cnt=0;
+        sort(arr.begin(),arr.end(),greater<int>());
+        for(int i=0;i<N;i++)
+        {
+            sum+=arr[i];
+            cnt++;
+            if(sum>totalSum)
+            {
+                return cnt;
+            }
+        }
+        return cnt;
+    }
+};
